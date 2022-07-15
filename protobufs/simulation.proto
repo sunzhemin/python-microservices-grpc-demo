@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package simulation;
+
+option go_package = "/simulation";
+
+service SIMGRPC {
+  rpc GetPD48 (PDRequest) returns (PDReply) {}
+  rpc SendFrame (FrameRequest) returns (FrameReply) {}
+}
+
+message PDRequest {
+  string agv_code = 1;
+}
+
+message PDReply {
+  string agv_code = 1;
+  bytes data = 2;
+}
+
+
+message FrameRequest {
+  string agv_code = 1;
+  bytes data = 2;
+}
+
+message FrameReply {
+  string message = 1;
+}
